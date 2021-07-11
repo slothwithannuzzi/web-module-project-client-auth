@@ -5,7 +5,6 @@ import axiosWithAuth from '../helpers/axiosWithAuth';
 const FriendsList = () => {
     const [friendsList, setFriendsList] = useState([]);
 
-    //form state
     const [friend, setFriend] = useState({
         name: '',
         age: '',
@@ -24,9 +23,10 @@ const FriendsList = () => {
       }
 
       const handleSubmit = e => {
+          const id = Date.now();
           e.preventDefault();
-          axiosWithAuth().post('/friends', (friend))
-          .then(res => console.log('posted', res))
+          axiosWithAuth().post('/friends', friend)
+          .then(res =>  console.log('posted', res))
           .catch(err => console.log(err))
       }
 
